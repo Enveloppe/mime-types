@@ -19,10 +19,10 @@ export default class MimeEntries {
 
 	/**
 	 * Get the types of a given extension
-	 * @param extension {string} the extension to get the types of
+	 * @param {string} extension the extension to get the types of
 	 * @returns {Set<string>}
 	 */
-	public getTypes(extension: string): Set<string> {
+	public getTypesByExtension(extension: string): Set<string> {
 		const allTypes = new Set<string>();
 		const ext = this.pathToExtension(extension);
 		for (const [types, entries] of Object.entries(this.database)) {
@@ -35,10 +35,10 @@ export default class MimeEntries {
 
 	/**
 	 * Get the extension based on the type
-	 * @param type {string} the type to get the extensions of
+	 * @param {string} type the type to get the extensions of
 	 * @returns {Set<string>}
 	 */
-	public getExtensions(type: string): Set<string> {
+	public getAllExtensions(type: string): Set<string> {
 		const allExtensions = new Set<string>();
 		for (const [types, entries] of Object.entries(this.database)) {
 			if (types === type && entries.extensions) {
@@ -65,8 +65,8 @@ export default class MimeEntries {
 	 * @param ext {string} the extension to get the entry of
 	 * @returns {Set<MimeEntry>}
 	 */
-	getMimeEntryByExt(ext: string): Set<MimeEntry> {
-		const allTypes = this.getTypes(ext);
+	getMimeEntriesByExt(ext: string): Set<MimeEntry> {
+		const allTypes = this.getTypesByExtension(ext);
 		const allEntries = new Set() as Set<MimeEntry>;
 		for (const type of allTypes) {
 			allEntries.add(this.database[type]);

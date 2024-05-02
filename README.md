@@ -113,3 +113,13 @@ database.getMimeEntriesByExt("js") /*
   }
 */
 ```
+
+### `getMainTypeByExt(extension: string): Set<string> | undefined`
+
+Returns a set of main MIME types for a given file extension.
+Main is the first part of the MIME type, e.g. `text` in `text/plain`.
+
+```typescript
+database.getMainTypeByExt("txt") // => Set { 'text' }
+database.getMainTypeByExt("js") // => Set { 'application', 'text' }
+```

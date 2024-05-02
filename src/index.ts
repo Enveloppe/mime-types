@@ -43,19 +43,6 @@ export default class MimeEntries {
 	}
 
 	/**
-	 * Check if an entry is already in the set
-	 * @param {Set<MimeEntry>} entries the set to check in
-	 * @param {MimeEntry} entry the entry to check
-	 */
-	private adds(entries: Set<MimeEntry>, entry: MimeEntry | undefined): Set<MimeEntry> {
-		if (!entry) return entries;
-		if (!Array.from(entries).some((e) => JSON.stringify(e) === JSON.stringify(entry))) {
-			entries.add(entry);
-		}
-		return entries;
-	}
-
-	/**
 	 * Get the types of a given extension
 	 * @param {string} extension the extension to get the types of
 	 * @returns {Set<string>}
@@ -126,5 +113,25 @@ export default class MimeEntries {
 			allEntries[type] = this.database[type];
 		}
 		return Object.keys(allEntries).length > 0 ? allEntries : undefined;
+	}
+
+	/**
+	 * Return "main" type of the type
+	 * @example
+	 * ```typescript
+	 * const mainType = getMainTypeByExt("js");
+	 * console.log(mainType); // Set { "application", "text" }
+	 * ```
+	 * @param ext {string} the extension to get the main type of
+	 * @returns {Set<string>}
+	 */
+	getMainTypeByExt(ext: string): Set<string> | undefined{
+		const allTypes = this.getTypesByExtension(ext);
+		const mainTypes = new Set<string>();
+		if (!allTypes) return undefined;
+		for (const type of allTypes) {
+			mainTypes.add(type.split("/")[0]);
+		}
+		return mainTypes;
 	}
 }

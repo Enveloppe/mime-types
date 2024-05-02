@@ -38,6 +38,13 @@ describe("list all RTF", () => {
 		const expected = {source: "iana", extensions: ["rtf"], compressible: true};
 		expect(rtf).toEqual(expected);
 	});
+	it("Get main type", () => {
+		const rtf = database.getMainTypeByExt("rtf");
+		const expected = new Set<string>();
+		expected.add("application");
+		expected.add("text");
+		expect(rtf).toEqual(expected);
+	});
 });
 
 describe("test with custom entries", () => {
@@ -64,6 +71,11 @@ describe("test with custom entries", () => {
 			"text/x-python" : { compressible: true, extensions: [ "py" ] }
 		};
 		expect(python).toEqual(expected);
+	});
+	it("get main type", () => {
+		const expected = new Set<string>();
+		expected.add("text");
+		expect(database.getMainTypeByExt("py")).toEqual(expected);
 	});
 });
 

@@ -1,6 +1,6 @@
-# Mime Types
+# Mime Entries
 
-`mime-types` is a utility for handling and converting between MIME types and file extensions. 
+`mime-entries` is a utility for handling and converting between MIME types and file extensions. 
 
 It provides a simple interface to fetch MIME types based on file extensions and vice versa. This can be particularly useful in scenarios where you need to determine the MIME type of a file using the name or path, based on their extension.
 

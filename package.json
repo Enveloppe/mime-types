@@ -13,13 +13,18 @@
   "scripts": {
     "test": "jest",
     "build": "tsup",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build",
+    "release": "commit-and-tag-version"
+  },
+  "commit-and-tag-version": {
+    "t": ""
   },
   "keywords": [],
   "license": "GPL-3.0-only",
   "devDependencies": {
     "@lisandra-dev/eslint-config": "^1.1.6",
     "@types/jest": "^29.5.12",
+    "commit-and-tag-version": "^12.4.1",
     "eslint-plugin-tsdoc": "^0.2.17",
     "ts-jest": "^29.1.2",
     "tsup": "^8.0.2",

@@ -12,7 +12,7 @@ It uses [mime-db](https://github.com/jshttp/mime-db) as references for MIME type
 npm install mime-entries
 ```
 
-(You can also use `yarn`, `pnpm` instead of `npm`)
+(You can also use `yarn` or `pnpm` instead of `npm`)
 
 ## Usage
 
@@ -123,3 +123,13 @@ Main is the first part of the MIME type, e.g. `text` in `text/plain`.
 database.getMainTypeByExt("txt") // => Set { 'text' }
 database.getMainTypeByExt("js") // => Set { 'application', 'text' }
 ```
+
+## Credit & Thanks
+
+I was heavily inspired by [mime](https://github.com/broofa/mime) but wanted to add some function. I ended up to write my own version, hopefully more understandable and with more features than mime.
+
+## Contributing
+
+The package use [commit-and-tag-version](https://www.npmjs.com/package/commit-and-tag-version) for release, so please follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification.
+
+Don't forget to update the tests before submitting a PR!
